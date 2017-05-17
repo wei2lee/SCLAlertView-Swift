@@ -361,7 +361,11 @@ open class SCLAlertView: UIViewController {
         var consumedHeight = CGFloat(0)
         consumedHeight += (titleActualHeight > 0 ? appearance.kTitleTop + titleActualHeight : hMargin)
         consumedHeight += 14
-        consumedHeight += appearance.kButtonHeight * CGFloat(buttons.count)
+        if buttons.count == 2 {
+            consumedHeight += appearance.kButtonHeight * 1
+        } else {
+            consumedHeight += appearance.kButtonHeight * CGFloat(buttons.count)
+        }
         consumedHeight += appearance.kTextFieldHeight * CGFloat(inputs.count)
         consumedHeight += appearance.kTextViewdHeight * CGFloat(input.count)
         let maxViewTextHeight = maxHeight - consumedHeight
@@ -417,10 +421,20 @@ open class SCLAlertView: UIViewController {
             y += appearance.kTextViewdHeight
         }
         // Buttons
-        for btn in buttons {
-            btn.frame = CGRect(x:hMargin, y:y, width:appearance.kWindowWidth - hMargin * 2, height:35)
-            btn.layer.cornerRadius = appearance.buttonCornerRadius
+        if buttons.count == 2 {
+            let buttonWidth:CGFloat = (appearance.kWindowWidth - hMargin * 3) / 2
+            buttons[0].frame = CGRect(x:hMargin, y:y, width:buttonWidth, height:35)
+            buttons[0].layer.cornerRadius = appearance.buttonCornerRadius
+            
+            buttons[1].frame = CGRect(x:hMargin*2 + buttonWidth, y:y, width:buttonWidth, height:35)
+            buttons[1].layer.cornerRadius = appearance.buttonCornerRadius
             y += appearance.kButtonHeight
+        } else {
+            for btn in buttons {
+                btn.frame = CGRect(x:hMargin, y:y, width:appearance.kWindowWidth - hMargin * 2, height:35)
+                btn.layer.cornerRadius = appearance.buttonCornerRadius
+                y += appearance.kButtonHeight
+            }
         }
     }
     
