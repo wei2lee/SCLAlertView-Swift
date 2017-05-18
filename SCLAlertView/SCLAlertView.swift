@@ -152,7 +152,7 @@ open class SCLAlertView: UIViewController {
         let kTextFieldHeight: CGFloat
         let kTextViewdHeight: CGFloat
         let kButtonHeight: CGFloat
-        let kButtonViewHeight: CGFloat = 35.0
+        var kButtonViewHeight: CGFloat = 35.0
 		let circleBackgroundColor: UIColor
         let contentViewColor: UIColor
         let contentViewBorderColor: UIColor
@@ -203,6 +203,7 @@ open class SCLAlertView: UIViewController {
             self.kTitleMinimumScaleFactor = kTitleMinimumScaleFactor
             self.kTextFont = kTextFont
             self.kButtonFont = kButtonFont
+            self.kButtonViewHeight = kButtonViewHeight
             
             self.disableTapGesture = disableTapGesture
             self.showCloseButton = showCloseButton
@@ -425,7 +426,13 @@ open class SCLAlertView: UIViewController {
             y += appearance.kTextViewdHeight
         }
         // Buttons
-        if buttons.count == 2 {
+        
+        if buttons.count == 1 {
+            let buttonWidth:CGFloat = (appearance.kWindowWidth - hMargin * 2) / 2
+            let x:CGFloat = (appearance.kWindowWidth - hMargin * 2) / 4 + hMargin
+            buttons[0].frame = CGRect(x:x, y:y, width:buttonWidth, height:appearance.kButtonViewHeight)
+            buttons[0].layer.cornerRadius = appearance.buttonCornerRadius
+        }else if buttons.count == 2 {
             let buttonWidth:CGFloat = (appearance.kWindowWidth - hMargin * 3) / 2
             buttons[0].frame = CGRect(x:hMargin, y:y, width:buttonWidth, height:appearance.kButtonViewHeight)
             buttons[0].layer.cornerRadius = appearance.buttonCornerRadius
