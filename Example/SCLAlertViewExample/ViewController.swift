@@ -58,17 +58,51 @@ class ViewController: UIViewController {
     @IBAction func showInfo(_ sender: AnyObject) {
         _ = SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
     }
-
+    
 	@IBAction func showEdit(_ sender: AnyObject) {
-        let appearance = SCLAlertView.SCLAppearance(showCloseButton: true)
+        let appearance = SCLAlertView.SCLAppearance(
+          kTextFieldHeight: 60,
+          showCloseButton: true
+        )
         let alert = SCLAlertView(appearance: appearance)
 		let txt = alert.addTextField("Enter your name")
         _ = alert.addButton("Show Name") {
-			print("Text value: \(txt.text)")
+			print("Text value: \(txt.text ?? "NA")")
 		}
 		_ = alert.showEdit(kInfoTitle, subTitle:kSubtitle)
 	}
     
+    @IBAction func showWait(_ sender: AnyObject) {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        
+        let alert = SCLAlertView(appearance: appearance).showWait("Download", subTitle: "Processing...", closeButtonTitle: nil, timeout: nil, colorStyle: nil, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.topToBottom)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            alert.setSubTitle("Progress: 10%")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                alert.setSubTitle("Progress: 30%")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    alert.setSubTitle("Progress: 50%")
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        alert.setSubTitle("Progress: 70%")
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            alert.setSubTitle("Progress: 90%")
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                alert.close()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     @IBAction func showCustomSubview(_ sender: AnyObject) {
         // Create custom Appearance Configuration
@@ -128,8 +162,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showCustomAlert(_ sender: AnyObject) {
-    
-        let alert = SCLAlertView()
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+            showCloseButton: false,
+            dynamicAnimatorActive: true,
+            buttonsLayout: .horizontal
+        )
+        let alert = SCLAlertView(appearance: appearance)
         _ = alert.addButton("First Button", target:self, selector:#selector(ViewController.firstButton))
         _ = alert.addButton("Second Button") {
             print("Second button tapped")
@@ -138,10 +179,33 @@ class ViewController: UIViewController {
         let icon = UIImage(named:"custom_icon.png")
         let color = UIColor.orange
         
-        _ = alert.showCustom("Custom Color", subTitle: "Custom color", color: color, icon: icon!)
+        _ = alert.showCustom("Custom Color", subTitle: "Custom color", color: color, circleIconImage: icon!)
     }
 	
-	func firstButton() {
+  @IBAction func showEmptySubTitleAlert(_ sender: UIButton) {
+    let margin = SCLAlertView.SCLAppearance.Margin(buttonSpacing: 30,
+                                                   bottom: 30,
+                                                   horizontal: 30)
+    
+    let appearance = SCLAlertView.SCLAppearance(
+      kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+      kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+      kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+      shouldAutoDismiss: true,
+      margin: margin
+    )
+    let alert = SCLAlertView(appearance: appearance)
+    _ = alert.addButton("First", target:self, selector:#selector(ViewController.firstButton))
+    
+    let icon = UIImage(named:"custom_icon.png")
+    let color = UIColor.orange
+    
+    _ = alert.showCustom("Empty SubTitle Alert", subTitle: "This is an empty subTitle alertView with horizontal and bottom margin equals 30", color: color, circleIconImage: icon!)
+
+  }
+  
+  @objc func firstButton() {
 		print("First button tapped")
 	}
+  
 }

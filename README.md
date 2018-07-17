@@ -48,7 +48,7 @@ SCLAlertView().showTitle(
     subTitle: "Operation successfully completed.", // String of view
     duration: 2.0, // Duration to show before closing automatically, default: 0.0
     completeText: "Done", // Optional button value, default: ""
-    style: .Success, // Styles - see below.
+    style: .success, // Styles - see below.
     colorStyle: 0xA429FF,
     colorTextButton: 0xFFFFFF
 )
@@ -130,11 +130,12 @@ alertView.showInfo("Custom icon", subTitle: "This is a nice alert with a custom 
 ```swift
 // Add a text field
 let alert = SCLAlertView()
-let txt = alert.addTextField(title:"Enter your name")
+let txt = alert.addTextField("Enter your name")
 alert.addButton("Show Name") {
-    println("Text value: \(txt.text)")
+    print("Text value: \(txt.text)")
 }
 alert.showEdit("Edit View", subTitle: "This alert view shows a text box")
+
 ```
 
 #### Use a custom subview instead of a subtitle
@@ -248,11 +249,19 @@ public enum SCLAnimationStyle {
 Installation
 ---
 
-SCLAlertView is available through [CocoaPods](http://cocoapods.org).
+SCLAlertView is available through 
+
+### [CocoaPods](http://cocoapods.org)
 
 To install add the following line to your Podfile:
 
     pod 'SCLAlertView'
+
+### [Carthage](https://github.com/Carthage/Carthage)
+
+To install add the following line to your Cartfile:
+
+`github "vikmeup/SCLAlertView-Swift" "master"`
 
 Collaboration
 ---
