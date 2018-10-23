@@ -144,29 +144,29 @@ public typealias DismissBlock = () -> Void
 open class SCLAlertView: UIViewController {
     
     public struct SCLAppearance {
-        var kDefaultShadowOpacity: CGFloat
-        var kCircleTopPosition: CGFloat
-        var kCircleBackgroundTopPosition: CGFloat
-        var kCircleHeight: CGFloat
-        var kCircleIconHeight: CGFloat
-        var kTitleHeight:CGFloat
-	var kTitleMinimumScaleFactor: CGFloat
-        var kWindowWidth: CGFloat
-        var kWindowHeight: CGFloat
-        var kTextHeight: CGFloat
-        var kTextFieldHeight: CGFloat
-        var kTextViewdHeight: CGFloat
-        var textViewTextAlignment: NSTextAlignment
-        var kButtonHeight: CGFloat
-        var kButtonViewHeight: CGFloat = 35.0
-		var circleBackgroundColor: UIColor
-        var contentViewColor: UIColor
-        var contentViewBorderColor: UIColor
-        var titleColor: UIColor
-        var viewTextColor: UIColor?
-        var subTitleColor: UIColor
+        public var kDefaultShadowOpacity: CGFloat
+        public var kCircleTopPosition: CGFloat
+        public var kCircleBackgroundTopPosition: CGFloat
+        public var kCircleHeight: CGFloat
+        public var kCircleIconHeight: CGFloat
+        public var kTitleHeight:CGFloat
+	public var kTitleMinimumScaleFactor: CGFloat
+        public var kWindowWidth: CGFloat
+        public var kWindowHeight: CGFloat
+        public var kTextHeight: CGFloat
+        public var kTextFieldHeight: CGFloat
+        public var kTextViewdHeight: CGFloat
+        public var textViewTextAlignment: NSTextAlignment
+        public var kButtonHeight: CGFloat
+        public var kButtonViewHeight: CGFloat = 35.0
+		public var circleBackgroundColor: UIColor
+        public var contentViewColor: UIColor
+        public var contentViewBorderColor: UIColor
+        public var titleColor: UIColor
+        public var viewTextColor: UIColor?
+        public var subTitleColor: UIColor
 
-        var margin: Margin
+        public var margin: Margin
         /// Margin for SCLAlertView.
         public struct Margin {
           //vertical
@@ -202,26 +202,26 @@ open class SCLAlertView: UIViewController {
         }
 
         // Fonts
-        var kTitleFont: UIFont
-        var kTextFont: UIFont
-        var kButtonFont: UIFont
+        public var kTitleFont: UIFont
+        public var kTextFont: UIFont
+        public var kButtonFont: UIFont
         
         // UI Options
-        var disableTapGesture: Bool
-        var showCloseButton: Bool
-        var showCircularIcon: Bool
-        var shouldAutoDismiss: Bool // Set this false to 'Disable' Auto hideView when SCLButton is tapped
-        var contentViewCornerRadius : CGFloat
-        var fieldCornerRadius : CGFloat
-        var buttonCornerRadius : CGFloat
-        var dynamicAnimatorActive : Bool
-        var buttonsLayout: SCLAlertButtonLayout
+        public var disableTapGesture: Bool
+        public var showCloseButton: Bool
+        public var showCircularIcon: Bool
+        public var shouldAutoDismiss: Bool // Set this false to 'Disable' Auto hideView when SCLButton is tapped
+        public var contentViewCornerRadius : CGFloat
+        public var fieldCornerRadius : CGFloat
+        public var buttonCornerRadius : CGFloat
+        public var dynamicAnimatorActive : Bool
+        public var buttonsLayout: SCLAlertButtonLayout
         
         // Actions
-        var hideWhenBackgroundViewIsTapped: Bool
+        public var hideWhenBackgroundViewIsTapped: Bool
         
         // Activity indicator
-        var activityIndicatorStyle: UIActivityIndicatorViewStyle
+        public var activityIndicatorStyle: UIActivityIndicatorViewStyle
         
         public init(kDefaultShadowOpacity: CGFloat = 0.7, kCircleTopPosition: CGFloat = 0.0, kCircleBackgroundTopPosition: CGFloat = 6.0, kCircleHeight: CGFloat = 56.0, kCircleIconHeight: CGFloat = 20.0, kTitleHeight:CGFloat = 25.0,  kWindowWidth: CGFloat = 240.0, kWindowHeight: CGFloat = 178.0, kTextHeight: CGFloat = 90.0, kTextFieldHeight: CGFloat = 30.0, kTextViewdHeight: CGFloat = 80.0, textViewTextAlignment:NSTextAlignment = .center, kButtonHeight: CGFloat = 35.0, kTitleFont: UIFont = UIFont.systemFont(ofSize: 20), kTitleMinimumScaleFactor: CGFloat = 1.0, kTextFont: UIFont = UIFont.systemFont(ofSize: 14), kButtonFont: UIFont = UIFont.boldSystemFont(ofSize: 14), showCloseButton: Bool = true, showCircularIcon: Bool = true, shouldAutoDismiss: Bool = true, contentViewCornerRadius: CGFloat = 5.0, fieldCornerRadius: CGFloat = 3.0, buttonCornerRadius: CGFloat = 3.0, hideWhenBackgroundViewIsTapped: Bool = false, circleBackgroundColor: UIColor = UIColor.white, contentViewColor: UIColor = UIColorFromRGB(0xFFFFFF), contentViewBorderColor: UIColor = UIColorFromRGB(0xCCCCCC), titleColor: UIColor = UIColorFromRGB(0x4D4D4D), subTitleColor: UIColor = UIColorFromRGB(0x4D4D4D), margin: Margin = Margin(), dynamicAnimatorActive: Bool = false, disableTapGesture: Bool = false, buttonsLayout: SCLAlertButtonLayout = .vertical, activityIndicatorStyle: UIActivityIndicatorViewStyle = .white, kButtonViewHeight:CGFloat = 35, viewTextColor:UIColor? = nil) {
             self.kDefaultShadowOpacity = kDefaultShadowOpacity
@@ -267,11 +267,11 @@ open class SCLAlertView: UIViewController {
             self.activityIndicatorStyle = activityIndicatorStyle
         }
         
-        mutating func setkWindowHeight(_ kWindowHeight:CGFloat) {
+        public mutating func setkWindowHeight(_ kWindowHeight:CGFloat) {
             self.kWindowHeight = kWindowHeight
         }
         
-        mutating func setkTextHeight(_ kTextHeight:CGFloat) {
+        public mutating func setkTextHeight(_ kTextHeight:CGFloat) {
             self.kTextHeight = kTextHeight
         }
     }
