@@ -144,29 +144,29 @@ public typealias DismissBlock = () -> Void
 open class SCLAlertView: UIViewController {
     
     public struct SCLAppearance {
-        let kDefaultShadowOpacity: CGFloat
-        let kCircleTopPosition: CGFloat
-        let kCircleBackgroundTopPosition: CGFloat
-        let kCircleHeight: CGFloat
-        let kCircleIconHeight: CGFloat
-        let kTitleHeight:CGFloat
-	let kTitleMinimumScaleFactor: CGFloat
-        let kWindowWidth: CGFloat
+        var kDefaultShadowOpacity: CGFloat
+        var kCircleTopPosition: CGFloat
+        var kCircleBackgroundTopPosition: CGFloat
+        var kCircleHeight: CGFloat
+        var kCircleIconHeight: CGFloat
+        var kTitleHeight:CGFloat
+	var kTitleMinimumScaleFactor: CGFloat
+        var kWindowWidth: CGFloat
         var kWindowHeight: CGFloat
         var kTextHeight: CGFloat
-        let kTextFieldHeight: CGFloat
-        let kTextViewdHeight: CGFloat
-        let textViewTextAlignment: NSTextAlignment
-        let kButtonHeight: CGFloat
+        var kTextFieldHeight: CGFloat
+        var kTextViewdHeight: CGFloat
+        var textViewTextAlignment: NSTextAlignment
+        var kButtonHeight: CGFloat
         var kButtonViewHeight: CGFloat = 35.0
-		let circleBackgroundColor: UIColor
-        let contentViewColor: UIColor
-        let contentViewBorderColor: UIColor
-        let titleColor: UIColor
+		var circleBackgroundColor: UIColor
+        var contentViewColor: UIColor
+        var contentViewBorderColor: UIColor
+        var titleColor: UIColor
         var viewTextColor: UIColor?
-        let subTitleColor: UIColor
+        var subTitleColor: UIColor
 
-        let margin: Margin
+        var margin: Margin
         /// Margin for SCLAlertView.
         public struct Margin {
           //vertical
@@ -202,9 +202,9 @@ open class SCLAlertView: UIViewController {
         }
 
         // Fonts
-        let kTitleFont: UIFont
-        let kTextFont: UIFont
-        let kButtonFont: UIFont
+        var kTitleFont: UIFont
+        var kTextFont: UIFont
+        var kButtonFont: UIFont
         
         // UI Options
         var disableTapGesture: Bool
